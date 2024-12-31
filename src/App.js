@@ -1,30 +1,26 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route
-} from "react-router-dom"
-
-import Navbar from "./components/Navbar"
+import React, { lazy, Suspense } from "react";
+import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
-import Home from "./pages/Home";
-import Recipes from "./pages/Recipes";
-import Settings from "./pages/Settings";
+const Recipes = lazy(() => import("./pages/Recipes"));
+const RecipeDetails = lazy(() => import("./components/RecipeDetails"));
 
 function App() {
   return (
     <Router>
       <Navbar />
       <div className="container main">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/recipes" element={<Recipes />} />
-          <Route path="/settings" element={<Settings />} />
-        </Routes>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Routes>
+            <Route path="/" element={<Recipes />} />
+            <Route path="/recipe/:id" element={<RecipeDetails />} />
+          </Routes>
+        </Suspense>
       </div>
       <Footer />
     </Router>
-  )
+  );
 }
 
 export default App;

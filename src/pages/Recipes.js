@@ -29,7 +29,7 @@ export default function Recipes(){
             authorImg: "/img/top-chiefs/img_6.jpg",
         },
         {
-            title: "Chicken Pan Pizza",
+            title: "Chicken Pizza",
             image: "/img/gallery/img_1.jpg",
             authorImg: "/img/top-chiefs/img_1.jpg",
         }, 
